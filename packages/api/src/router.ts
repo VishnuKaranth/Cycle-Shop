@@ -163,7 +163,7 @@ export const appRouter = router({
           select: { name: true },
           take: 5
         });
-        return products.map(p => p.name);
+        return products.map((p: { name: string }) => p.name);
       }),
   }),
 
@@ -234,7 +234,7 @@ export const appRouter = router({
           data: {
             ...productData,
             variants: {
-              create: variants?.map(v => ({
+              create: variants?.map((v: any) => ({
                 sku: v.sku, name: v.name, price: v.price, color: v.color, size: v.size,
                 inventory: { create: { quantity: v.stock } }
               })) || []
@@ -512,7 +512,7 @@ export const appRouter = router({
         });
 
         const COLORS = ["#3b82f6", "#f97316", "#22c55e", "#a855f7", "#ef4444"];
-        const categoryData = Object.entries(categoryMap).map(([name, value], i) => ({
+        const categoryData = Object.entries(categoryMap).map(([name, value]: [string, number], i: number) => ({
           name, 
           value, 
           color: COLORS[i % COLORS.length]
@@ -536,7 +536,7 @@ export const appRouter = router({
           .slice(0, 5);
 
         return {
-          revenueHistory: Object.entries(revenueMap).map(([month, data]) => ({
+          revenueHistory: Object.entries(revenueMap).map(([month, data]: [string, any]) => ({
             month,
             revenue: data.revenue,
             orders: data.orders
@@ -623,7 +623,7 @@ export const appRouter = router({
 
         // Filter by tier if applicable (since it's a calculated field, ideally we'd do this in SQL but for now this is fine for initial admin load)
         const filteredCustomers = input.tier && input.tier !== "all" 
-          ? customers.filter(c => c.tier === input.tier)
+          ? customers.filter((c: any) => c.tier === input.tier)
           : customers;
 
         return {
@@ -685,7 +685,7 @@ export const appRouter = router({
             status: "PENDING",
             totalAmount: input.totalAmount,
             items: {
-              create: input.items.map(item => ({
+              create: input.items.map((item: any) => ({
                 variant: { connect: { id: item.variantId } },
                 quantity: item.quantity,
                 price: item.price,
@@ -696,7 +696,7 @@ export const appRouter = router({
         });
 
         // 2. Prepare Stripe Line Items
-        const lineItems = order.items.map(item => ({
+        const lineItems = order.items.map((item: any) => ({
           price_data: {
             currency: "usd",
             product_data: {
