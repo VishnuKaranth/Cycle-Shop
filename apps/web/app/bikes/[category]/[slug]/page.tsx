@@ -51,8 +51,8 @@ export default function ProductDetailPage() {
   const variant = product.variants[selectedVariantIdx];
   const price = variant?.price ? `$${Number(variant.price).toLocaleString()}` : "$0";
   const imgUrl = variant?.images?.[0]?.url || "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=2000&auto=format&fit=crop";
-  const sizes = [...new Set(product.variants.map((v: any) => v.size as string).filter(Boolean))];
-  const colors = [...new Set(product.variants.map((v: any) => v.color as string).filter(Boolean))];
+  const sizes = [...new Set(product.variants.map((v: any) => v.size as string).filter(Boolean))] as string[];
+  const colors = [...new Set(product.variants.map((v: any) => v.color as string).filter(Boolean))] as string[];
   const inStock = variant?.inventory ? variant.inventory.quantity - variant.inventory.reserved > 0 : true;
 
   // Group specs by group name
