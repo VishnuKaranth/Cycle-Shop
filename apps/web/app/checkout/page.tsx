@@ -121,7 +121,7 @@ export default function CheckoutPage() {
             <h1 className="text-4xl font-black text-white uppercase tracking-tighter mb-10">Checkout</h1>
             
             <div className="flex items-center gap-4">
-              {steps.map((step, idx) => {
+              {steps.map((step, idx: number) => {
                 const Icon = step.icon;
                 const isActive = currentStep === step.id;
                 const isCompleted = steps.findIndex(s => s.id === currentStep) > idx;

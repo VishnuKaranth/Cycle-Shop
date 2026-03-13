@@ -56,7 +56,7 @@ export default function OrderHistoryPage() {
         {/* Orders List */}
         <div className="space-y-6">
           {orders && orders.length > 0 ? (
-            orders.map((order: any, idx) => (
+            orders.map((order: any, idx: number) => (
               <motion.div
                 key={order.id}
                 initial={{ opacity: 0, y: 10 }}

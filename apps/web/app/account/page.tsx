@@ -91,7 +91,7 @@ export default function AccountPage() {
           {/* Main Grid */}
           <div className="lg:col-span-2 space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {sections.map((section, idx) => (
+              {sections.map((section, idx: number) => (
                 <Link 
                   key={idx}
                   href={section.href}
