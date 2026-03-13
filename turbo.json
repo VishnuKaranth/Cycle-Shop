@@ -3,8 +3,12 @@
   "globalEnv": ["DATABASE_URL", "DIRECT_URL", "STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_APP_URL"],
   "ui": "tui",
   "tasks": {
+    "generate": {
+      "dependsOn": ["^generate"],
+      "outputs": ["node_modules/.prisma/client/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^generate", "^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -12,7 +16,7 @@
       "dependsOn": ["^lint"]
     },
     "check-types": {
-      "dependsOn": ["^check-types"]
+      "dependsOn": ["^generate", "^check-types"]
     },
     "dev": {
       "cache": false,
