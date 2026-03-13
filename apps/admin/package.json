@@ -1,0 +1,43 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --max-warnings 0",
+    "check-types": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@repo/api": "^0.1.0",
+    "@repo/ui": "*",
+    "@supabase/ssr": "^0.9.0",
+    "@supabase/supabase-js": "^2.99.1",
+    "@tanstack/react-query": "^4.43.0",
+    "@trpc/client": "^10.45.4",
+    "@trpc/react-query": "^10.45.4",
+    "@trpc/server": "^10.45.4",
+    "autoprefixer": "^10.4.27",
+    "framer-motion": "^12.35.2",
+    "lucide-react": "^0.577.0",
+    "next": "16.1.5",
+    "postcss": "^8.4.31",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^2.15.4",
+    "superjson": "^2.2.6",
+    "tailwindcss": "^3.4.19",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "^9.39.1",
+    "typescript": "5.9.2"
+  }
+}
