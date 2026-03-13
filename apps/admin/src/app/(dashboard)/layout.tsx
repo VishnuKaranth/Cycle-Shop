@@ -8,14 +8,7 @@ export default async function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Simple check in layout as an additional safeguard, though middleware handles the redirect
-  const cookieStore = await cookies();
-  const session = cookieStore.get("admin_session");
-  
-  if (!session) {
-    redirect("/login");
-  }
-
+  // Middleware handles auth and redirection based on Supabase session
   return (
     <>
       <div className="w-64 bg-zinc-900 border-r border-zinc-800 shrink-0 text-white p-6 flex flex-col">
