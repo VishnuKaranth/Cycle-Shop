@@ -342,7 +342,7 @@ export default function CheckoutPage() {
                       <p className="text-[#666] text-[10px] uppercase tracking-widest mt-1">{item.variantName}</p>
                       {item.selections && (
                         <div className="mt-2 space-y-0.5">
-                           {Object.values(item.selections).map((sel: any, i) => (
+                           {Object.values(item.selections).map((sel: any, i: number) => (
                               <p key={i} className="text-[9px] text-[#444] uppercase tracking-tighter">
                                  {sel.categoryName}: {sel.optionName}
                               </p>
