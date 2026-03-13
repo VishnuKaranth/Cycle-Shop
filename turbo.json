@@ -5,7 +5,7 @@
   "tasks": {
     "generate": {
       "dependsOn": ["^generate"],
-      "outputs": ["node_modules/.prisma/client/**"]
+      "outputs": ["../../node_modules/.prisma/client/**", "node_modules/.prisma/client/**"]
     },
     "build": {
       "dependsOn": ["^generate", "^build"],
