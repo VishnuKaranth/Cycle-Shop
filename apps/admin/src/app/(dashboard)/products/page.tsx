@@ -117,16 +117,16 @@ export default function ProductsPage() {
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
             {isLoading ? (
-              [...Array(5)].map((_, i) => (
+              [...Array(5)].map((_, i: number) => (
                 <tr key={i}>
-                  {[...Array(7)].map((_, j) => (
+                  {[...Array(7)].map((_, j: number) => (
                     <td key={j} className="px-6 py-4">
                       <div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" />
                     </td>
                   ))}
                 </tr>
               ))
-            ) : data?.products.map(product => (
+            ) : data?.products.map((product: any) => (
               <tr key={product.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
                 <td className="px-6 py-4">
                   <div className="font-semibold">{product.name}</div>

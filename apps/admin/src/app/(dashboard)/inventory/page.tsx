@@ -131,14 +131,14 @@ export default function InventoryPage() {
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
             {isLoading ? (
-              [...Array(6)].map((_, i) => (
+              [...Array(6)].map((_, i: number) => (
                 <tr key={i}>
-                  {[...Array(9)].map((_, j) => (
+                  {[...Array(9)].map((_, j: number) => (
                     <td key={j} className="px-6 py-4"><div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" /></td>
                   ))}
                 </tr>
               ))
-            ) : items?.map(item => (
+            ) : items?.map((item: any) => (
               <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
                 <td className="px-6 py-3 font-mono text-xs font-bold text-gray-600 dark:text-gray-400">{item.sku}</td>
                 <td className="px-6 py-3">

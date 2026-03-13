@@ -51,7 +51,7 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, i) => (
+        {stats.map((stat: any, i: number) => (
           <div key={i} className="bg-white border border-gray-200 dark:bg-[#111] dark:border-gray-800 rounded-xl p-6 shadow-sm group hover:border-accent transition-colors">
             <div className="flex justify-between items-center mb-4 text-sm font-medium">
               <h3 className="tracking-widest uppercase text-gray-500 group-hover:text-accent transition-colors">{stat.title}</h3>
@@ -119,7 +119,7 @@ export default function AdminDashboardPage() {
             <Link href="/orders" className="text-[10px] font-bold uppercase tracking-widest text-[#666] hover:text-accent transition-colors">View All</Link>
           </div>
           <div className="space-y-6">
-            {recentOrdersData?.orders.map((o) => (
+            {recentOrdersData?.orders.map((o: any) => (
               <div key={o.id} className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
                   <Activity className="w-4 h-4 text-gray-400" />

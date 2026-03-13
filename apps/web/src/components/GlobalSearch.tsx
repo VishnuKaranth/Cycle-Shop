@@ -29,7 +29,7 @@ export function GlobalSearchModal({ isOpen, onClose }: { isOpen: boolean; onClos
   }, []);
 
   const addToHistory = (item: {label: string, href: string}) => {
-    const newHistory = [item, ...history.filter(h => h.href !== item.href)].slice(0, 5);
+    const newHistory = [item, ...history.filter((h: any) => h.href !== item.href)].slice(0, 5);
     setHistory(newHistory);
     localStorage.setItem("search-history", JSON.stringify(newHistory));
   };
@@ -131,7 +131,7 @@ export function GlobalSearchModal({ isOpen, onClose }: { isOpen: boolean; onClos
                 >
                   All
                 </button>
-                {data.facets.categories.filter(f => f.count > 0).map(f => (
+                {data.facets.categories.filter((f: any) => f.count > 0).map((f: any) => (
                   <button
                     key={f.name}
                     onClick={() => setCategory(category === f.name ? "all" : f.name)}
@@ -151,7 +151,7 @@ export function GlobalSearchModal({ isOpen, onClose }: { isOpen: boolean; onClos
                     <div className="px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#666]">
                       {data.total} results for &ldquo;{debouncedQ}&rdquo;
                     </div>
-                    {data.results.map((r, i) => (
+                    {data.results.map((r: any, i: number) => (
                       <motion.button
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}

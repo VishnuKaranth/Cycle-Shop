@@ -35,7 +35,7 @@ export default function NewProductPage() {
   });
 
   const updateVariant = (index: number, field: keyof Variant, value: string | number) => {
-    setVariants(prev => prev.map((v, i) => i === index ? { ...v, [field]: value } : v));
+    setVariants(prev => prev.map((v: Variant, i: number) => i === index ? { ...v, [field]: value } : v));
   };
 
   const addVariant = () => {
@@ -43,7 +43,7 @@ export default function NewProductPage() {
   };
 
   const removeVariant = (index: number) => {
-    setVariants(prev => prev.filter((_, i) => i !== index));
+    setVariants(prev => prev.filter((_: any, i: number) => i !== index));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -155,14 +155,14 @@ export default function NewProductPage() {
             </button>
           </div>
           <div className="space-y-3">
-            {variants.map((v, idx) => (
+            {variants.map((v: Variant, idx: number) => (
               <div key={idx} className="grid grid-cols-6 gap-3 p-4 bg-gray-50 dark:bg-zinc-900 rounded-lg items-end">
                 {[
                   { label: "SKU", field: "sku", type: "text", placeholder: "ACF-M-BLK", colSpan: "col-span-1" },
                   { label: "Name", field: "name", type: "text", placeholder: "Aeroad CFR Di2 - M", colSpan: "col-span-2" },
                   { label: "Price ($)", field: "price", type: "number", placeholder: "8999", colSpan: "col-span-1" },
                   { label: "Color", field: "color", type: "text", placeholder: "Black", colSpan: "col-span-1" },
-                ].map(({ label, field, type, placeholder, colSpan }) => (
+                ].map(({ label, field, type, placeholder, colSpan }: any) => (
                   <div key={field} className={colSpan}>
                     <label className="block text-xs font-bold uppercase tracking-widest mb-1.5 text-gray-500">{label}</label>
                     <input
@@ -181,7 +181,7 @@ export default function NewProductPage() {
                     onChange={e => updateVariant(idx, "size", e.target.value)}
                     className="w-full bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs outline-none focus:border-accent transition-colors"
                   >
-                    {["2XS", "XS", "S", "M", "L", "XL", "2XL"].map(s => <option key={s}>{s}</option>)}
+                    {["2XS", "XS", "S", "M", "L", "XL", "2XL"].map((s: string) => <option key={s}>{s}</option>)}
                   </select>
                 </div>
                 {variants.length > 1 && (

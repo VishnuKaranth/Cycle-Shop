@@ -9,7 +9,7 @@ export default function DealerLocatorPage() {
   const [zipCode, setZipCode] = useState("");
   const { data: dealers, isLoading } = trpc.dealer.list.useQuery();
 
-  const filteredDealers = dealers?.filter(d => 
+  const filteredDealers = dealers?.filter((d: any) => 
     !zipCode || 
     d.zipCode.includes(zipCode) || 
     d.city.toLowerCase().includes(zipCode.toLowerCase()) ||
@@ -50,7 +50,7 @@ export default function DealerLocatorPage() {
             </div>
           )}
 
-          {filteredDealers.map((dealer, i) => (
+          {filteredDealers.map((dealer: any, i: number) => (
             <motion.div 
               key={dealer.id}
               initial={{ opacity: 0, x: -20 }}

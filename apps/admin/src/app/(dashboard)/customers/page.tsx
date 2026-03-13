@@ -48,7 +48,7 @@ export default function CustomersPage() {
           { label: "Total Customers", value: stats?.total, icon: <Users className="w-4 h-4" /> },
           { label: "Platinum / Gold", value: `${stats?.platinum ?? "—"} / ${stats?.gold ?? "—"}`, icon: <Crown className="w-4 h-4" /> },
           { label: "Silver / Bronze", value: `${stats?.silver ?? "—"} / ${stats?.bronze ?? "—"}`, icon: <TrendingUp className="w-4 h-4" /> },
-        ].map((s, i) => (
+        ].map((s: any, i: number) => (
           <div key={i} className="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-4 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0">{s.icon}</div>
             <div>
@@ -61,7 +61,7 @@ export default function CustomersPage() {
 
       {/* Tier filters */}
       <div className="flex gap-2 flex-wrap">
-        {["all", "Platinum", "Gold", "Silver", "Bronze"].map(t => (
+        {["all", "Platinum", "Gold", "Silver", "Bronze"].map((t: any) => (
           <button
             key={t}
             onClick={() => { setTierFilter(t); setPage(1); }}
@@ -99,8 +99,8 @@ export default function CustomersPage() {
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
             {isLoading ? (
-              [...Array(6)].map((_, i) => <tr key={i}>{[...Array(7)].map((_, j) => <td key={j} className="px-6 py-4"><div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" /></td>)}</tr>)
-            ) : data?.customers.map(customer => (
+              [...Array(6)].map((_, i: number) => <tr key={i}>{[...Array(7)].map((_, j: number) => <td key={j} className="px-6 py-4"><div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" /></td>)}</tr>)
+            ) : data?.customers.map((customer: any) => (
               <tr key={customer.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                 <td className="px-6 py-3">
                   <div className="font-semibold">{customer.name}</div>

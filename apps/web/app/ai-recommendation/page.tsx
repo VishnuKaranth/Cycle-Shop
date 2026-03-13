@@ -77,7 +77,7 @@ export default function AIRecommendationPage() {
               <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <h2 className="text-2xl font-bold mb-6 tracking-wide">Step 2: Experience Level</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {["Beginner", "Intermediate", "Pro"].map(level => (
+                  {["Beginner", "Intermediate", "Pro"].map((level: string) => (
                     <button 
                       key={level} 
                       onClick={() => setFormData({...formData, experience: level.toLowerCase()})}
@@ -95,7 +95,7 @@ export default function AIRecommendationPage() {
               <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <h2 className="text-2xl font-bold mb-6 tracking-wide">Step 3: Primary Terrain</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {["Road", "Gravel", "Mountain"].map(terrain => (
+                  {["Road", "Gravel", "Mountain"].map((terrain: string) => (
                     <button 
                       key={terrain} 
                       onClick={() => setFormData({...formData, terrain: terrain.toLowerCase()})}
@@ -149,7 +149,7 @@ export default function AIRecommendationPage() {
           {!isAnalyzing && !recommendation && (
             <div className="mt-12 flex justify-between items-center pt-8 border-t border-gray-800">
               <div className="flex gap-2">
-                {[0, 1, 2].map(i => (
+                {[0, 1, 2].map((i: number) => (
                   <div key={i} className={`w-8 h-1 transition-colors ${step >= i ? "bg-accent" : "bg-gray-800"}`} />
                 ))}
               </div>

@@ -62,7 +62,7 @@ export default function OrdersPage() {
           { label: "Pending", value: stats?.pending, color: "text-yellow-500" },
           { label: "To Ship", value: stats?.paid, color: "text-blue-500" },
           { label: "Shipped", value: stats?.shipped, color: "text-purple-500" },
-        ].map((s, i) => (
+        ].map((s: any, i: number) => (
           <div key={i} className="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">{s.label}</div>
             <div className={`text-2xl font-black ${s.color}`}>{s.value ?? "—"}</div>
@@ -72,7 +72,7 @@ export default function OrdersPage() {
 
       {/* Status tab filter */}
       <div className="flex gap-2 flex-wrap">
-        {["all", "PENDING", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"].map(s => (
+        {["all", "PENDING", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"].map((s: any) => (
           <button
             key={s}
             onClick={() => { setStatusFilter(s); setPage(1); }}
@@ -110,8 +110,8 @@ export default function OrdersPage() {
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
             {isLoading ? (
-              [...Array(6)].map((_, i) => <tr key={i}>{[...Array(7)].map((_, j) => <td key={j} className="px-6 py-4"><div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" /></td>)}</tr>)
-            ) : data?.orders.map(order => (
+              [...Array(6)].map((_, i: number) => <tr key={i}>{[...Array(7)].map((_, j: number) => <td key={j} className="px-6 py-4"><div className="h-4 bg-gray-100 dark:bg-gray-800 rounded animate-pulse" /></td>)}</tr>)
+            ) : data?.orders.map((order: any) => (
               <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
                 <td className="px-6 py-3 font-mono font-bold text-xs">{order.id}</td>
                 <td className="px-6 py-3">
@@ -174,7 +174,7 @@ export default function OrdersPage() {
                 onChange={e => setNewStatus(e.target.value as OrderStatus)}
                 className="w-full bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-accent transition-colors"
               >
-                {(["PENDING", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"] as OrderStatus[]).map(s => <option key={s} value={s}>{s}</option>)}
+                {(["PENDING", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"] as OrderStatus[]).map((s: any) => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
 

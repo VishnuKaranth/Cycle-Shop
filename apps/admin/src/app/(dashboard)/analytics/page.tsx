@@ -75,7 +75,7 @@ export default function AnalyticsPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {stats.map((s, i) => (
+        {stats.map((s: any, i: number) => (
           <div key={i} className="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
               <div className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">{s.icon}</div>
@@ -95,7 +95,7 @@ export default function AnalyticsPage() {
             <p className="text-xs text-gray-500">Historical performance</p>
           </div>
           <div className="flex gap-2">
-            {(["revenue", "orders"] as const).map(v => (
+            {(["revenue", "orders"] as const).map((v: any) => (
               <button
                 key={v}
                 onClick={() => setRevenueView(v)}
