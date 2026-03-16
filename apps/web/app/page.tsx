@@ -14,10 +14,10 @@ export default function Home() {
 
   // Mapping of category slug to Unsplash ID for dynamic categories
   const categoryImages: Record<string, string> = {
-    road: "photo-1485965120184-e220f721d03e",
-    gravel: "photo-1541625602330-2277a4c4618c",
-    mountain: "photo-1565902181512-58826bbd92fc",
-    electric: "photo-1571188654248-7a89013e0d80",
+    road: "photo-1532298229144-0ec0c57515c7",
+    gravel: "photo-1643039686503-d3d6adb4e18a",
+    mountain: "photo-1506316940527-4d1c138978a0",
+    electric: "photo-1620802051782-725fa33db067",
   };
 
   return (
