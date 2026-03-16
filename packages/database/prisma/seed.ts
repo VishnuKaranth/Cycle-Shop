@@ -11,28 +11,28 @@ const prisma = new PrismaClient();
 // ─── High-quality Unsplash bike images ─────────────────────────────────
 const IMAGES = {
   road: [
-    "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1656166295713-f616617cf261?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1601536564038-825eef50efc5?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1562409211-d16682be4c48?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1591549915159-31e15700c708?q=80&w=1600&auto=format&fit=crop",
   ],
   gravel: [
-    "https://images.unsplash.com/photo-1541625602330-2277a4c4618c?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1505705694340-019e56e27e5a?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1596738403613-acc3e8d18bdd?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1684936505930-d8cc0d9f3896?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1606075015184-ca2c3d2992db?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1690957388018-f7f45098f659?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1617660118159-c1c58acd2904?q=80&w=1600&auto=format&fit=crop",
   ],
   mountain: [
-    "https://images.unsplash.com/photo-1565902181512-58826bbd92fc?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1575585269294-7d28a021c636?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1635126039432-1742dbb90506?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1535369643553-a33e0d1ac81d?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1435226148432-67c26cc5cbaf?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1609976969605-5d9bf2cb246c?q=80&w=1600&auto=format&fit=crop",
   ],
   electric: [
-    "https://images.unsplash.com/photo-1571188654248-7a89013e0d80?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1623043453862-87e20e8b6886?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558980664-ce6960be307d?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1624865162000-4d6cd5e2c242?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622598473264-81a98f1c7be5?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618987688327-dc0b28888fe4?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1628591087564-d18c07cb7bfc?q=80&w=1600&auto=format&fit=crop",
   ],
 };
 
@@ -535,7 +535,7 @@ async function main() {
       // Image
       await prisma.productImage.create({
         data: {
-          url: v.img,
+          url: v.img!,
           alt: `${prod.name} - ${v.color}`,
           isPrimary: true,
           productVariantId: variant.id,

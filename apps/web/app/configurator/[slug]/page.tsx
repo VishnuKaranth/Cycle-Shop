@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 import { trpc } from "../../../src/trpc/client";
 import { Check, Info, Loader2, ShoppingCart } from "lucide-react";
+import { useAuth } from "../../../src/components/AuthProvider";
 import { useCart } from "../../../src/store/useCart";
 
 export default function ConfiguratorPage() {
@@ -12,6 +13,7 @@ export default function ConfiguratorPage() {
   const router = useRouter();
   const slug = params.slug as string;
   const [isAdding, setIsAdding] = useState(false);
+  const { user } = useAuth();
   const { addItem } = useCart();
 
   // tRPC Queries
@@ -184,6 +186,12 @@ export default function ConfiguratorPage() {
           <button
             disabled={isAdding}
             onClick={() => {
+              if (!user) {
+                const currentUrl = encodeURIComponent(window.location.pathname);
+                router.push(`/login?redirect=${currentUrl}`);
+                return;
+              }
+
               setIsAdding(true);
               const selectionDetails: any = {};
               Object.entries(selections).forEach(([catId, optId]) => {

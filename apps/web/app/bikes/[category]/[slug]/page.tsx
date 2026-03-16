@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { trpc } from "../../../../src/trpc/client";
 import { ChevronDown, ChevronUp, Check, ShoppingCart, Box, Image as ImageIcon } from "lucide-react";
+import { useAuth } from "../../../../src/components/AuthProvider";
 import { useCart } from "../../../../src/store/useCart";
 import { ThreeBikeViewer } from "../../../../src/components/ThreeBikeViewer";
 
@@ -19,6 +20,8 @@ export default function ProductDetailPage() {
   const [openSpec, setOpenSpec] = useState<string | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [show3D, setShow3D] = useState(false);
+  const router = useRouter();
+  const { user } = useAuth();
   const { addItem } = useCart();
 
   const { data: product, isLoading } = trpc.product.getBySlug.useQuery({ slug });
@@ -233,6 +236,13 @@ export default function ProductDetailPage() {
                   disabled={!variant || !inStock || isAdding}
                   onClick={() => {
                     if (!variant) return;
+
+                    if (!user) {
+                      const currentUrl = encodeURIComponent(window.location.pathname);
+                      router.push(`/login?redirect=${currentUrl}`);
+                      return;
+                    }
+
                     setIsAdding(true);
                     const cartItem = {
                       id: `${product.slug}-${variant.id}`,

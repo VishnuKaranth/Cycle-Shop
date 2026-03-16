@@ -2,13 +2,17 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../../src/store/useCart";
-import Link from "next/link";
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ChevronLeft } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../src/components/AuthProvider";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, getTotalPrice, getTotalItems } = useCart();
   const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
+  const { user } = useAuth();
 
   // Prevent hydration mismatch
   useEffect(() => {
@@ -168,12 +172,18 @@ export default function CartPage() {
                 <span className="text-4xl font-black tracking-tighter">${getTotalPrice().toLocaleString()}</span>
               </div>
 
-              <Link
-                href="/checkout"
+              <button
+                onClick={() => {
+                  if (!user) {
+                    router.push("/login?redirect=/checkout");
+                  } else {
+                    router.push("/checkout");
+                  }
+                }}
                 className="w-full flex items-center justify-center gap-3 bg-white text-black py-5 font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-accent hover:text-white transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:shadow-accent/40"
               >
                 Proceed to Checkout <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
 
               <div className="mt-8 space-y-4">
                 <p className="text-[9px] text-[#444] text-center font-bold uppercase tracking-widest leading-relaxed">

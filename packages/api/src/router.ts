@@ -660,7 +660,7 @@ export const appRouter = router({
 
   // ─── Public Order Flow ──────────────────────────────────────────────────────
   order: router({
-    create: publicProcedure
+    create: protectedProcedure
       .input(z.object({
         items: z.array(z.object({
           variantId: z.string(),
@@ -681,7 +681,7 @@ export const appRouter = router({
         // 1. Create Order in Database
         const order = await ctx.prisma.order.create({
           data: {
-            userId: ctx.userId || null,
+            userId: ctx.userId,
             status: "PENDING",
             totalAmount: input.totalAmount,
             items: {
